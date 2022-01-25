@@ -5,11 +5,15 @@
  * 2. Envoyez un mail avec ces informations, si certaines choses manquent, complétez
  * 3. Déployez sur votre serveur et testez !
  */
-
-$from = '';
-$to = '';
-$message = 'Hello World, sending a simple mail !';
-// TODO Votre code ici.
+/**
+ * $from = 'stefan.hanotiau@hotmail.com';
+ * $to = 'stefan.hanotiau@gmail.com';
+ * $message = 'Hello World, sending a simple mail !';
+ *
+ * // TODO Votre code ici.
+ * mail($to, 'Hello World', $message);
+ *
+ */
 
 
 /**
@@ -24,3 +28,18 @@ $message = 'Hello World, sending a simple mail !';
  *     N'écrasez pas les valeurs déjà existantes ( s'il y en a ).
  */
 // TODO Votre code ici.
+
+$from = "From: stefan.hanotiau@gmail.com";
+$to = 'stefan.hanotiau@hotmail.com';
+$message = "Mon message doit faire 120 caractères minimum mais je n'ai pas d'inspiration, alors je ne sais pas combien de caractères fera ce message, j'espère au moins 120 caractères !";
+$sujet = 'Mon sujet';
+$message1 = wordwrap($message, 70, "\r\n");
+
+if (mail($to, $sujet, $message1, $from)) {
+    echo "Le message a bien été envoyé. Merci !";
+    file_put_contents('mails.txt', $message);
+} else {
+    echo "Une erreur est survenue lors de l'envoi du mail.";
+}
+
+
